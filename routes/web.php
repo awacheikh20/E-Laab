@@ -39,8 +39,7 @@ Route::prefix('/')->controller(App\Http\Controllers\Elaab::class)->group(functio
         Route::get('/evaluations','evaluations')->name('EnseignantEvaluations');
         Route::get('/evaluation','evaluation')->name('EnseignantEvaluation');
         Route::post('/evaluation','evaluation')->name('EnseignantEvaluation');
-        Route::get('/planning','planning')->name('EnseignantPlanning');
-        
+        Route::get('/planning','planning')->name('EnseignantPlanning');  
     });
     
 
