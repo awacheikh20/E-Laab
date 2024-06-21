@@ -36,24 +36,15 @@ Route::prefix('/')->controller(App\Http\Controllers\Elaab::class)->group(functio
             Route::get('/planning','planning')->name('EtudiantPlanning');
             Route::get('/layout','layout')->name('Etudiantlayout');
 
-
-        });
+        
     });
-    Route::middleware(['auth','enseignant'])->group(function () {
-        Route::prefix('/enseignant')->controller(App\Http\Controllers\Enseignant::class)->group(function(){
-            Route::get('/dashboard','dashboard')->name('EnseignantDashboard');
-            Route::get('/evaluations','evaluations')->name('EnseignantEvaluations');
-            Route::get('/evaluation/{id}','evaluation')->where('id', '[0-9]+')->name('EnseignantEvaluation');
-            Route::get('/evaluation/ajouter','EnseignantCreeEvaluation')->name('EnseignantCreeEvaluation');
-            Route::post('/evaluation/ajouter','EnseignantPostCreeEvaluation')->name('EnseignantPostCreeEvaluation');
-            Route::get('/evaluation/bilan','EnseignantBilanEvaluation')->name('EnseignantBilanEvaluation');
-            Route::post('/evaluation/bilan','EnseignantPostBilanEvaluation')->name('EnseignantPostBilanEvaluation');
-            Route::get('/evaluation/validation','EnseignantValidationEvaluation')->name('EnseignantValidationEvaluation');
-            Route::get('/planning','planning')->name('EnseignantPlanning');
-            Route::get('/etudiants','etudiants')->name('EnseignantEtudiants');
-            Route::get('/classes','classes')->name('EnseignantClasses');
-
-        });
+    Route::prefix('/enseignant')->controller(App\Http\Controllers\Enseignant::class)->group(function(){
+        Route::get('/dashboard','dashboard')->name('EnseignantDashboard');
+        Route::get('/evaluations','evaluations')->name('EnseignantEvaluations');
+        Route::get('/evaluation','evaluation')->name('EnseignantEvaluation');
+        Route::post('/evaluation','evaluation')->name('EnseignantEvaluation');
+        Route::get('/planning','planning')->name('EnseignantPlanning');
+        
     });
 
 });
