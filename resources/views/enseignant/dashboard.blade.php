@@ -1,7 +1,7 @@
-@extends('etudiant.layout')
+@extends('enseignant.layout')
 @section('content')
-    <div class="w-[95%] m-auto max-h-screen overflow-visible mt-10">
-       <div class="space-y-5  w-full bg-white mt-10">
+    <div class="w-[95%] m-auto max-h-screen overflow-visible mt-20">
+       <div class="space-y-5  w-full bg-white">
             <span class="font-bold text-blue-900 text-lg flex justify-center items-center">
                 Bonjour {{Auth()->user()->prenom.' '.Auth()->user()->nom}}!
             </span>
@@ -80,8 +80,8 @@
                     </div>
                 </div>
                 
-                
             </div>
        </div>
+       
     </div>
 @endsection

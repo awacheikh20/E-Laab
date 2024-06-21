@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Correction extends Model
+class Proposition extends Model
 {
     use HasFactory;
     protected $fillable = [
         'libelle',
-        'evaluation'
+        'question',
+        'estCorrecte'
 ];
 }

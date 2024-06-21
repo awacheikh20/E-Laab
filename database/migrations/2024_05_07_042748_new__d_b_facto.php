@@ -31,8 +31,26 @@ return new class extends Migration
             $table->dateTime('dateDebutHeure')->unique();
             $table->foreignId('enseignant')->constrained('users')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('matiere')->constrained('matieres')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreignId('classe')->constrained('classes')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
+        });
+
+        Schema::create('evaluclasses', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('classe');
+            $table->unsignedBigInteger('evaluation');
+            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrent()->useCurrentOnUpdate();
+            
+            // Foreign keys
+            $table->foreign('classe')
+                  ->references('id')->on('classes')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
+
+            $table->foreign('evaluation')
+                  ->references('id')->on('evaluations')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
         });
 
         Schema::create('questions', function (Blueprint $table) {
@@ -43,25 +61,24 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('correction', function (Blueprint $table) {
+        Schema::create('propositions', function (Blueprint $table) {
             $table->id();
             $table->string('libelle');
-            $table->foreignId('evaluation')->constrained('evaluations')->onDelete('restrict')->onUpdate('restrict');
+            $table->boolean('estCorrecte');   
+            $table->foreignId('question')->constrained('questions')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
 
         Schema::create('reponses', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle')->unique();
-            $table->boolean('estCorrecte');
             $table->foreignId('etudiant')->constrained('users')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreignId('question')->constrained('questions')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('proposition')->constrained('propositions')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
 
         Schema::create('resultats', function (Blueprint $table) {
             $table->id();
-            $table->float('note')->unique();
+            $table->float('note');
             $table->string('appreciation');
             $table->foreignId('etudiant')->constrained('users')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('evaluation')->constrained('evaluations')->onDelete('restrict')->onUpdate('restrict');
@@ -78,7 +95,8 @@ return new class extends Migration
         Schema::dropIfExists('matieres');
         Schema::dropIfExists('evaluations');
         Schema::dropIfExists('questions');
-        Schema::dropIfExists('correction');
+        Schema::dropIfExists('evaluclasses');
+        Schema::dropIfExists('propositions');
         Schema::dropIfExists('reponses');
         Schema::dropIfExists('resultats');
     }
