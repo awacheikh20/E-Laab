@@ -9,7 +9,7 @@
                 @csrf
                 <div class="w-full bg-white">
                      <span class="text-blue-900 text-lg flex justify-center items-center">
-                        <label class="text-lg font-bold" for="nom">Nom de l'évaluation : </label>
+                        <label class="text-lg font-bold" for="nom">Nom l'évaluation : </label>
                         <input readonly name="nom" type="text" value=" {{$evaluation['nom']}}" placeholder="Entrez le libellé de l'évaluation"><br> 
                      </span>
                 </div>
@@ -43,8 +43,8 @@
                             </div>
                             @foreach ($question['propositions'] as $slug => $proposition)
                                 <div class="propositions p-1">
-                                   <input class="ml-16" type="checkbox" name="corrections[{{$index}}][]" id="" value="{{$proposition}}">{{$index}}
-                                   <span class="ml-16">{{$slug+1}}.</span><input readonly class="ml-2 w-[80%]" type="text" value="{{$proposition}}" name="propositions[0][]" placeholder="Entrez une proposition"><br><br>
+                                   <input class="ml-16" type="checkbox" name="corrections[{{$index}}][]" id="" value="{{$proposition}}">
+                                   <span class="ml-4">{{$slug+1}}.</span><input readonly class="ml-2 w-[80%]" type="text" value="{{$proposition}}" name="propositions[0][]" placeholder="Entrez une proposition"><br><br>
                                 </div>
                             @endforeach
                             
@@ -54,35 +54,11 @@
                     
                 </div>
                
-                <div class="flex justify-center items-center p-5 w-full space-x-10">
-                    <label class="font-bold" for="classe">Matière concernée :</label>
-                    <span class="flex justify-center items-center space-x-5">
-                        @foreach ($evaluation['matieres'] as $matiere)
-                            <div class="space-x-2">
-                                <label class="text-blue-900" for="matieres">{{$matiere}}</label>
-                            </div>
-                        @endforeach
-                    </span>
-                    
-                    {{-- {{dd($evaluation)}} --}}
-                    
-                </div>
-                <div class="flex justify-center items-center p-5 w-full space-x-10">
-                    <label class="font-bold" for="classe">Classe(s) concernée(s) :</label>
-                    <span class="flex justify-center items-center space-x-5">
-                        @foreach ($evaluation['classes'] as $classe)
-                        <div class="space-x-2">
-                            <label class="text-blue-900" for="classes">{{$classe}}</label>
-                        </div>
-                        @endforeach
-                    </span>
-                    
-                </div>
                 <div class="flex justify-center items-center p-5">
                     <div class="flex justify-center items-center p-5">
                         <input class="h-12 bg-blue-900 rounded-lg p-3 font-bold text-white cursor-pointer" type="submit" value="Suivant">
                     </div>
-                    {{-- <a href="{{route('EnseignantValidationEvaluation')}}" class="h-12 bg-blue-900 rounded-lg p-3 font-bold text-white cursor-pointer">Créer l'évaluation</a> --}}
+                    {{-- <a href="{{route('EnseignantValidationpartie')}}" class="h-12 bg-blue-900 rounded-lg p-3 font-bold text-white cursor-pointer">Créer l'évaluation</a> --}}
                 </div>
             </form>
         </div>

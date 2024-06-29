@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="w-[95%] m-auto max-h-screen overflow-visible mt-20">
-        <form action="" method="post">
+        <form action="{{route('EnseignantPostCreeEvaluation')}}" method="post">
             @csrf
            
             <div class="w-full bg-white">
@@ -11,7 +11,7 @@
                     <input name="nom" type="text" placeholder="Entrez le libellé de l'évaluation"><br> 
                 </span>
                 @error('nom')
-                    <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                    <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -32,13 +32,13 @@
 
             <div class="flex space-x-12 w-full justify-center items-center">
                 @error('date')
-                    <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                    <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                 @enderror
                 @error('debut')
-                    <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                    <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                 @enderror
                 @error('duree')
-                    <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                    <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -64,16 +64,16 @@
                     </div>
                     <div class="flex justify-center items-center w-full space-x-10">
                         @error('questions.*.libelle')
-                            <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                            <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                         @enderror
                         @error('questions.*.points')
-                            <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                            <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                         @enderror
                         @error('propositions.*.*')
-                            <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                            <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                         @enderror
                         @error('questions.*.propositions.*.correct')
-                        <div class="text-red-600 justify-center items-center flex">{{ $message }}</div>
+                        <div class="text-red-500 justify-center items-center flex">{{ $message }}</div>
                     @enderror
                     </div>
                     <div class="flex justify-center items-center">
@@ -109,7 +109,6 @@
                     @endforeach
                 </span>
             </div>
-
             <div class="flex justify-center items-center p-5">
                 <input class="h-12 bg-blue-900 rounded-lg p-3 font-bold text-white cursor-pointer" type="submit" value="Suivant">
             </div>

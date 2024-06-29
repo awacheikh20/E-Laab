@@ -34,8 +34,6 @@ class creerFormEvaluation extends FormRequest
             'classes.*' => 'required|string|max:255', // Le nom de chaque classe doit être une chaîne de caractères d'une longueur maximale de 255 caractères
             'matieres' => 'required|array',
             'matieres.*' => 'required|string|max:255', // Le nom de chaque matière doit être une chaîne de caractères d'une longueur maximale de 255 caractères
-
-
         ];
     }
 }

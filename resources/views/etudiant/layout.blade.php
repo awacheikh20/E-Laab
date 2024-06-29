@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
     
-    <title>E-Laab | Etudiant</title>
+    <title>E-laab | Etudiant</title>
 </head>
 <body class="bg-white">
     @include('elaab.composants.header')
    <div class="flex justify-end items-start w-full relative h-screen">
-        <div class="bg-blue-900 w-[10%] h-screen fixed left-0">
+        <div class="bg-blue-800 w-[10%] h-screen fixed left-0">
             <div class="pt-20 ">
                 <a class="" href="{{route('EtudiantDashboard')}}">
                     <div  class="h-18 flex justify-center items-center">
@@ -48,7 +48,7 @@
                         Evaluations
                     </div>
                 </a>
-                <a class="" href="{{route('EtudiantPlanning')}}">
+                <a class="" href="{{route('EvaluationPlanning')}}">
                     <div  class=" h-12 flex justify-center items-center text-center text-white hover:bg-white hover:text-blue-900 hover:rounded-l-full font-bold text-lg">
                         Planning
                     </div>

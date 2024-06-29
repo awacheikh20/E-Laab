@@ -8,7 +8,7 @@
     <title>E-Laab | Accueil</title>
 </head>
 <body>
-    @include('elaab.composants.header')
-    @include('elaab.composants.welcome')
+  @include('elaab.composants.header')
+  @include('elaab.composants.welcome')
 </body>
 </html>

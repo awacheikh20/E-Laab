@@ -11,8 +11,10 @@ class Evaluation extends Model
     protected $fillable = [
         'nom',
         'duree',
-        'dateDebutHeure',
+        'dateDebut',
+        'HeureDebut',
         'enseignant',
         'matiere'
-];
+    ];
+            
 }

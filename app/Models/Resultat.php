@@ -9,9 +9,9 @@ class Resultat extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'note',
-        'appreciation',
-       'etudiant',
+        'etudiant',
+        'score',
         'evaluation',
+        'appreciation',
 ];
 }

@@ -6,14 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->string('nom')->unique();
+            $table->string('niveau')->unique();
             $table->timestamps();
         });
         
@@ -24,11 +22,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
             $table->string('nom')->unique();
             $table->string('duree');
-            $table->dateTime('dateDebutHeure')->unique();
+            $table->dateTime('dateDebut');
+            $table->time('HeureDebut');
             $table->foreignId('enseignant')->constrained('users')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('matiere')->constrained('matieres')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
@@ -36,19 +36,18 @@ return new class extends Migration
 
         Schema::create('evaluclasses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('classe');
             $table->unsignedBigInteger('evaluation');
+            $table->unsignedBigInteger('classe');
             $table->timestamp('created_at')->nullable()->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrent()->useCurrentOnUpdate();
             
-            // Foreign keys
-            $table->foreign('classe')
-                  ->references('id')->on('classes')
+            $table->foreign('evaluation')
+                  ->references('id')->on('evaluations')
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
 
-            $table->foreign('evaluation')
-                  ->references('id')->on('evaluations')
+            $table->foreign('classe')
+                  ->references('id')->on('classes')
                   ->onDelete('restrict')
                   ->onUpdate('restrict');
         });
@@ -78,8 +77,7 @@ return new class extends Migration
 
         Schema::create('resultats', function (Blueprint $table) {
             $table->id();
-            $table->float('note');
-            $table->string('appreciation');
+            $table->float('score');
             $table->foreignId('etudiant')->constrained('users')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('evaluation')->constrained('evaluations')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
@@ -91,13 +89,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('classes');
-        Schema::dropIfExists('matieres');
         Schema::dropIfExists('evaluations');
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('matieres');
+        Schema::dropIfExists('classes');
         Schema::dropIfExists('evaluclasses');
         Schema::dropIfExists('propositions');
-        Schema::dropIfExists('reponses');
         Schema::dropIfExists('resultats');
+        Schema::dropIfExists('reponses');
     }
 };

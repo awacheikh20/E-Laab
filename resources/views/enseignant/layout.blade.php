@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>E-Laab | Enseignant</title>
+    <title>E-laab | Enseignant</title>
 </head>
 <body class="bg-white h-screen">
     @if (Auth()->user()->status == 'enseignant')
         @include('elaab.composants.header')
         <div class="flex justify-end items-start w-full relative h-screen">
-             <div class="bg-blue-900  w-[10%] h-screen fixed left-0">
+             <div class="bg-blue-800  w-[10%] h-screen fixed left-0">
                  <div class="pt-20 ">
                      <a class="" href="{{route('EnseignantDashboard')}}">
                          <div  class="h-18 flex justify-center items-center">
@@ -53,16 +53,17 @@
                              Planning
                          </div>
                      </a>
-                     <a class="" href="{{route('EnseignantEtudiants')}}">
+                     <a class="" href="">
                          <div  class=" h-10 flex justify-center items-center text-center text-white hover:bg-white hover:text-blue-900 hover:rounded-l-full font-bold text-lg">
-                             Étudiants
+                             Etudiant
                          </div>
                      </a>
                      <a class="" href="{{route('EnseignantClasses')}}">
-                         <div  class=" h-10 flex justify-center items-center text-center text-white hover:bg-white hover:text-blue-900 hover:rounded-l-full font-bold text-lg">
-                             Classes
-                         </div>
-                     </a>
+                        <div  class=" h-10 flex justify-center items-center text-center text-white hover:bg-white hover:text-blue-900 hover:rounded-l-full font-bold text-lg">
+                            Classe
+                        </div>
+                    </a>
+                     
                  </div>
              </div>
              <div class="flex justify-end items-center w-[90%] ">
